@@ -1,7 +1,6 @@
 {% extends "base.html.twig" %}
 {% block body %}
     <div class="container">
-        <h1>Home</h1>
-        <a href="{{ path('grocery-list')}}">Grocery List</a>
+        {{ component('GroceryList') }}
     </div>
 {% endblock %}

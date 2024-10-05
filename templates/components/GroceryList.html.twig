@@ -1,0 +1,23 @@
+<div {{ attributes }}>
+	<h1>Grocery list</h1>
+	{% if items %}
+		<ol class="list-group list-group-flush">
+			{% for item in items %}
+				<li class="d-flex justify-content-between list-group-item">{{ item[0] }}
+					x
+					{{ item[1] }}<button {{ live_action('removeItem', { key: loop.index0} , {'debounce' : 300}) }} type="button" class="btn btn-danger">Delete</button>
+				</li>
+			{% endfor %}
+		</ol>
+	{% else %}
+		<p>Your list is empty!</p>
+	{% endif %}
+
+	<div class="container">
+		<div class="input-group mb-3">
+			<input type="text" data-model="norender|name" class="form-control" placeholder="Enter an item:">
+			<input type="number" step="1" min="1" data-model="norender|amount" class="form-control" placeholder="Amount:">
+			<button {{ live_action('addItem', {} , {'debounce' : 300}) }} class="btn btn-outline-secondary" type="button">Add Item</button>
+		</div>
+	</div>
+</div>
